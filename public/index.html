@@ -1,43 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/uploads/logo.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/uploads/logo.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#002623" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="مديرية أوقاف حلب - وزارة الأوقاف - الجمهورية العربية السورية"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="keywords" content="وزارة الأوقاف, مديرية أوقاف حلب, البطاقات التعريفية, الجمهورية العربية السورية" />
+    <meta name="author" content="وزارة الأوقاف - مديرية أوقاف حلب" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://awqaf-aleppo.sy/" />
+    <meta property="og:title" content="مديرية أوقاف حلب" />
+    <meta property="og:description" content="نظام إلكتروني لإدارة وتوليد البطاقات التعريفية للموظفين" />
+    <meta property="og:image" content="%PUBLIC_URL%/uploads/logo.png" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://awqaf-aleppo.sy/" />
+    <meta property="twitter:title" content="مديرية أوقاف حلب" />
+    <meta property="twitter:description" content="نظام إلكتروني لإدارة وتوليد البطاقات التعريفية للموظفين" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/uploads/logo.png" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/uploads/logo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts - Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>نظام البطاقات التعريفية | مديرية أوقاف حلب | وزارة الأوقاف</title>
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Cairo', Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        direction: rtl;
+        background: linear-gradient(135deg, #edebe0 0%, #ffffff 100%);
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Loading Screen */
+      .initial-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #002623 0%, #054239 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-logos {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+      
+      .loading-logo {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        animation: pulse 2s ease-in-out infinite;
+        filter: brightness(0) invert(1);
+      }
+      
+      .loading-text-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .loading-title {
+        color: #edebe0;
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .loading-subtitle {
+        color: #b9a779;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      
+      .loading-description {
+        color: #edebe0;
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+      
+  
+      /* Responsive Loading Screen */
+      @media (max-width: 768px) {
+        .loading-logos {
+          gap: 20px;
+        }
+        
+        .loading-logo {
+          width: 70px;
+          height: 70px;
+        }
+        
+        .loading-title {
+          font-size: 22px;
+        }
+        
+        .loading-subtitle {
+          font-size: 18px;
+        }
+        
+        .loading-description {
+          font-size: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial;">
+        <h1 style="color: #002623;">يجب تفعيل JavaScript لتشغيل هذا التطبيق</h1>
+        <p style="color: #3d3a3b; margin-top: 20px;">
+          الرجاء تفعيل JavaScript في المتصفح لديك للمتابعة.
+        </p>
+      </div>
+    </noscript>
+    
+    <!-- Initial Loading Screen -->
+    <div id="initial-loading" class="initial-loading">
+      <div class="loading-logos">
+        <img 
+          src="%PUBLIC_URL%/uploads/logo.png" 
+          alt="شعار وزارة الأوقاف" 
+          class="loading-logo"
+          onerror="this.style.display='none'"
+        />
+        <img 
+          src="%PUBLIC_URL%/uploads/Syrian_Arab_Republic.png" 
+          alt="شعار الجمهورية العربية السورية" 
+          class="loading-logo"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      
+      <div class="loading-text-container">
+        <div class="loading-title">الجمهورية العربية السورية</div>
+        <div class="loading-subtitle">وزارة الأوقاف</div>
+        <div class="loading-subtitle">مديرية أوقاف حلب</div>
+        <div class="loading-description">نظام البطاقات التعريفية</div>
+      </div>
+      
+    </div>
+    
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    
+    <script>
+      // إزالة شاشة التحميل عند جاهزية التطبيق
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('initial-loading');
+          if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease';
+            setTimeout(function() {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 1000);
+      });
+      
+      // Fallback إذا لم يتم تحميل React
+      setTimeout(function() {
+        const root = document.getElementById('root');
+        const loading = document.getElementById('initial-loading');
+        
+        if (root && !root.hasChildNodes() && loading) {
+          loading.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #edebe0;">
+              <h2 style="margin-bottom: 20px;">خطأ في تحميل التطبيق</h2>
+              <p style="margin-bottom: 20px;">الرجاء تحديث الصفحة أو التواصل مع الدعم الفني</p>
+              <button 
+                onclick="location.reload()" 
+                style="
+                  background: linear-gradient(135deg, #428177 0%, #054239 100%);
+                  color: #edebe0;
+                  border: none;
+                  padding: 12px 30px;
+                  font-size: 16px;
+                  font-weight: 700;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-family: 'Cairo', Arial;
+                "
+              >
+                إعادة التحميل
+              </button>
+            </div>
+          `;
+        }
+      }, 10000); // بعد 10 ثواني
+    </script>
   </body>
 </html>
