@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # React Frontend with npm serve
+  frontend:
+    build: .
+    container_name: awqaf_front
+    image: hr_awqaf_front
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    networks:
+      - hr_awqaf_network
+    environment:
+      - NODE_ENV=production
+  
+
+networks:
+  hr_awqaf_network:
+    external: true
