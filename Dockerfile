@@ -16,7 +16,7 @@ COPY . .
 RUN mkdir -p /app/public/uploads
 
 # Expose port 3000
-EXPOSE 3000
+EXPOSE 4000
 
 # Start development server
 CMD ["npm", "start"]
