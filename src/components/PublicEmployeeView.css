@@ -1,0 +1,690 @@
+@import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Harmattan', Arial, sans-serif;
+  background: #edebe0;
+  min-height: 100vh;
+}
+
+.public-view-container {
+  min-height: 100vh;
+  padding: 0;
+  direction: rtl;
+  background: linear-gradient(135deg, #edebe0 0%, #d4d1c1 100%);
+}
+
+/* Wrapper للمحتوى */
+.content-wrapper {
+  width: 100%;
+  margin: 0;
+  background: white;
+  min-height: 100vh;
+}
+
+/* الهيدر */
+.public-header {
+  background: linear-gradient(135deg, #002623 0%, #054239 50%, #428177 100%);
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 5px solid #b9a779;
+}
+
+.public-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(237, 235, 224, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(185, 167, 121, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.header-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.republic-logo,
+.ministry-logo {
+  height: 75px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.35));
+  transition: transform 0.3s ease;
+}
+
+.republic-logo:hover,
+.ministry-logo:hover {
+  transform: scale(1.03);
+}
+
+.header-titles {
+  color: #edebe0;
+  position: relative;
+  z-index: 1;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #edebe0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.sub-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #b9a779;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.5px;
+}
+
+/* بطاقة الموظف */
+.employee-card {
+  background: #fafafa;
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+
+/* قسم الصورة والمعلومات الأساسية */
+.card-header-section {
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid #428177;
+}
+
+.card-header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, transparent 0%, rgba(66, 129, 119, 0.03) 100%);
+  pointer-events: none;
+}
+
+.card-header-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(185, 167, 121, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.photo-container {
+  position: relative;
+  z-index: 1;
+}
+
+.employee-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 5px solid #002623;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px #428177;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.employee-photo:hover {
+  transform: scale(1.02);
+}
+
+.photo-placeholder {
+  width: 220px;
+  height: 220px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3d3a3b 0%, #161616 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #002623;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px #428177;
+}
+
+.photo-placeholder span {
+  color: #edebe0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.basic-info {
+  text-align: right;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  max-width: 600px;
+}
+
+.employee-name {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #002623;
+  margin-bottom: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.info-badge {
+  display: inline-block;
+  padding: 12px 35px;
+  border-radius: 6px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #002623;
+}
+
+.info-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.employee-type {
+  background: #b9a779;
+  color: #002623;
+}
+
+/* أقسام المعلومات */
+.info-section {
+  padding: 50px 60px;
+  border-bottom: 2px solid #e0e0e0;
+  background: white;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.info-section:last-of-type {
+  border-bottom: none;
+}
+
+.info-section:nth-child(even) {
+  background: #fafafa;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #002623;
+  margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 4px solid #002623;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 150px;
+  height: 4px;
+  background: #b9a779;
+}
+
+.title-icon {
+  font-size: 2.4rem;
+  color: #428177;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.info-item {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 8px;
+  border-right: 4px solid #428177;
+  border-left: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 38, 35, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 0;
+  background: #054239;
+  transition: height 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 4px 16px rgba(0, 38, 35, 0.15);
+  border-right-color: #054239;
+}
+
+.info-item:hover::before {
+  height: 100%;
+}
+
+.info-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #6b1f2a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.info-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #002623;
+  position: relative;
+  z-index: 1;
+  line-height: 1.6;
+}
+
+.blood-type {
+  color: #6b1f2a;
+  font-weight: 800;
+  font-size: 1.7rem;
+}
+
+/* قسم الباركود */
+.barcode-section {
+  padding: 60px 50px;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+  border-top: 2px solid #e0e0e0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.barcode-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, transparent 0%, rgba(66, 129, 119, 0.03) 100%);
+  pointer-events: none;
+}
+
+.qr-code {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 0 0 3px #002623;
+  border: 2px solid white;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+  transform: scale(1.03);
+}
+
+.barcode-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #002623;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 4px;
+  background: white;
+  padding: 12px 30px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  border: 1px solid #e0e0e0;
+}
+
+/* الفوتر */
+.public-footer {
+  text-align: center;
+  padding: 40px 40px;
+  background: linear-gradient(135deg, #002623 0%, #054239 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 5px solid #b9a779;
+}
+
+.public-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(237, 235, 224, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(185, 167, 121, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.public-footer p {
+  color: #edebe0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 10px 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.footer-note {
+  font-size: 1.1rem !important;
+  color: #b9a779 !important;
+  font-style: italic;
+  font-weight: 500 !important;
+}
+
+/* شاشة التحميل */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 30px;
+  padding: 40px;
+  background: white;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 8px solid #e0e0e0;
+  border-top: 8px solid #002623;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  box-shadow: 0 4px 16px rgba(0, 38, 35, 0.2);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #002623;
+  letter-spacing: 0.5px;
+}
+
+/* رسالة الخطأ */
+.error-card {
+  background: white;
+  border-radius: 12px;
+  padding: 80px 60px;
+  text-align: center;
+  max-width: 700px;
+  margin: 100px auto;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  border: 3px solid #6b1f2a;
+  border-top: 8px solid #6b1f2a;
+}
+
+.error-icon {
+  font-size: 7rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.error-card h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #6b1f2a;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
+.error-card p {
+  font-size: 1.4rem;
+  color: #3d3a3b;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .employee-card,
+  .info-section,
+  .barcode-section {
+    max-width: 100%;
+  }
+
+  .info-section {
+    padding: 40px 40px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    box-shadow: none;
+  }
+
+  .public-header {
+    padding: 35px 25px;
+  }
+
+  .header-logos {
+    gap: 35px;
+    margin-bottom: 20px;
+  }
+
+  .republic-logo,
+  .ministry-logo {
+    height: 75px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .sub-title {
+    font-size: 1.4rem;
+  }
+
+  .card-header-section {
+    flex-direction: column;
+    padding: 40px 25px;
+    gap: 30px;
+  }
+
+  .basic-info {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .employee-photo,
+  .photo-placeholder {
+    width: 180px;
+    height: 180px;
+  }
+
+  .employee-name {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .info-section {
+    padding: 35px 25px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    padding-bottom: 15px;
+  }
+
+  .section-title::after {
+    width: 100px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .info-item {
+    padding: 20px 22px;
+  }
+
+  .qr-code {
+    width: 200px;
+    height: 200px;
+  }
+
+  .barcode-section {
+    padding: 45px 25px;
+  }
+
+  .public-footer {
+    padding: 35px 25px;
+  }
+
+  .error-card {
+    margin: 50px 20px;
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 1.6rem;
+  }
+
+  .sub-title {
+    font-size: 1.2rem;
+  }
+
+  .employee-name {
+    font-size: 1.9rem;
+  }
+
+  .info-value {
+    font-size: 1.3rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .info-label {
+    font-size: 0.95rem;
+  }
+
+  .employee-photo,
+  .photo-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+
+  .qr-code {
+    width: 170px;
+    height: 170px;
+  }
+
+  .info-section {
+    padding: 30px 20px;
+  }
+
+  .public-header {
+    padding: 30px 20px;
+  }
+}
+
+/* طباعة */
+@media print {
+  .public-view-container {
+    background: white;
+  }
+
+  .content-wrapper {
+    box-shadow: none;
+  }
+
+  .card-header-section::before,
+  .public-header::before,
+  .public-footer::before,
+  .barcode-section::before {
+    display: none;
+  }
+
+  .employee-card {
+    page-break-inside: avoid;
+  }
+
+  .info-section {
+    page-break-inside: avoid;
+  }
+}
