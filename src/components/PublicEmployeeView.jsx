@@ -155,6 +155,10 @@ const PublicEmployeeView = () => {
               <span className="info-label">رقم الموظف</span>
               <span className="info-value">{employee.id}</span>
             </div>
+            <div className="info-item">
+              <span className="info-label">رقم الهاتف</span>
+              <span className="info-value">{employee.mobile_1}</span>
+            </div>
             {employee.fingerprint_id && (
               <div className="info-item">
                 <span className="info-label">رقم البصمة</span>
